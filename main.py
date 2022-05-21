@@ -26,3 +26,15 @@ model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=
 model.fit(train_images, train_labels, epochs=10)
 
 evaluate(model, test_images, test_labels, False)
+
+prediction = model.predict(test_images)
+
+for i in range(5):
+    plt.grid(False)
+    plt.imgshow(test_images[i], cmap=plt.cm.binary)
+    current_test_label = test_labels[i]
+    current_prediction_index = np.argmax(prediction[i])
+    current_wearable = class_names[current_prediction_index]
+    plt.xlabel(f"Actual {current_test_label}")
+    plt.title(f"Prediction {current_prediction_index}")
+    plt.show()
