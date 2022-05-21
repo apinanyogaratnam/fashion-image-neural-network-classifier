@@ -31,7 +31,7 @@ prediction = model.predict(test_images)
 
 for i in range(5):
     plt.grid(False)
-    plt.imgshow(test_images[i], cmap=plt.cm.binary)
+    plt.imshow(test_images[i], cmap=plt.cm.binary)
     current_test_label_index = test_labels[i]
     current_test_label = class_names[current_test_label]
     current_prediction_index = np.argmax(prediction[i])
