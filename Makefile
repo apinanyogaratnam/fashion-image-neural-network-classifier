@@ -5,3 +5,6 @@ run:
 
 build:
 	docker build -t ${IMAGE} .
+
+run:
+	docker run ${IMAGE}
