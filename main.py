@@ -3,6 +3,8 @@ from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 
+from evaluate import evaluate
+
 data = keras.datasets.fashion_mnist
 
 (train_images, train_labels), (test_images, test_labels) = data.load_data()
@@ -23,6 +25,4 @@ model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=
 
 model.fit(train_images, train_labels, epochs=10)
 
-test_loss, test_acc = model.evaluate(test_images, test_labels)
-
-print("tested accuracy", test_acc)
+evaluate(model, test_images, test_labels, False)
