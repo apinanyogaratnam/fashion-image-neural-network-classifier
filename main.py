@@ -1,3 +1,5 @@
+import os
+
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -29,6 +31,7 @@ evaluate(model, test_images, test_labels, False)
 
 prediction = model.predict(test_images)
 
+os.mkdir('images')
 for i in range(5):
     plt.grid(False)
     plt.imshow(test_images[i], cmap=plt.cm.binary)
@@ -39,3 +42,5 @@ for i in range(5):
     plt.xlabel(f"Actual {current_test_label}")
     plt.title(f"Prediction {current_wearable}")
     plt.show()
+    image_name = current_test_label.replace(' ', '').lower()
+    plt.savefig(f'images/{image_name}')
