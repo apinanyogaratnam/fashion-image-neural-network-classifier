@@ -1,6 +1,6 @@
 IMAGE := fashion-image-neural-network-classifier
 
-run:
+start:
 	python3 main.py
 
 build:
