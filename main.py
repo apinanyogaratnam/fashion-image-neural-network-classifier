@@ -37,5 +37,5 @@ for i in range(5):
     current_prediction_index = np.argmax(prediction[i])
     current_wearable = class_names[current_prediction_index]
     plt.xlabel(f"Actual {current_test_label}")
-    plt.title(f"Prediction {current_prediction_index}")
+    plt.title(f"Prediction {current_wearable}")
     plt.show()
