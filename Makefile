@@ -8,3 +8,6 @@ build:
 
 run:
 	docker run ${IMAGE}
+
+view-plots:
+	docker exec -it $(sha) /bin/bash

@@ -1,5 +1,6 @@
 import os
 import glob
+import time
 
 import tensorflow as tf
 from tensorflow import keras
@@ -46,3 +47,6 @@ for i in range(5):
     plt.title(f"Prediction {current_wearable}")
     image_name = current_test_label.replace(' ', '').lower()
     plt.savefig(f'images/{image_name}.png')
+
+print('giving the user 300 seconds to view the saves images')
+time.sleep(300)
