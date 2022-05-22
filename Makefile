@@ -7,7 +7,4 @@ build:
 	docker build -t ${IMAGE} .
 
 run:
-	docker run ${IMAGE}
-
-view-plots:
-	docker exec -it $(sha) /bin/bash
+	docker run -p 8080:8080 ${IMAGE}

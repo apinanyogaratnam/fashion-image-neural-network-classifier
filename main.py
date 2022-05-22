@@ -1,13 +1,16 @@
 import os
-import glob
-import time
 
-import tensorflow as tf
-from tensorflow import keras
+import mpld3
 import numpy as np
 import matplotlib.pyplot as plt
 
+from tensorflow import keras
+
 from evaluate import evaluate
+
+# set to true if running in a docker container to show plots in the browser
+# set to false if running locally to show plots in a native window
+DOCKERIZED = True
 
 data = keras.datasets.fashion_mnist
 
@@ -29,12 +32,14 @@ model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=
 
 model.fit(train_images, train_labels, epochs=10)
 
-evaluate(model, test_images, test_labels, False)
+evaluate(model, test_images, test_labels)
 
 prediction = model.predict(test_images)
 
 files = os.listdir(os.getcwd())
-if 'images' not in files: os.mkdir('images')
+
+if 'images' not in files:
+    os.mkdir('images')
 
 for i in range(5):
     plt.grid(False)
@@ -46,10 +51,7 @@ for i in range(5):
     plt.xlabel(f"Actual {current_test_label}")
     plt.title(f"Prediction {current_wearable}")
 
-    plt.show()
-
-    # image_name = current_test_label.replace(' ', '').lower()
-    # plt.savefig(f'images/{image_name}.png', dpi=100)
-
-print('giving the user 300 seconds to view the saves images')
-time.sleep(300)
+    if DOCKERIZED:
+        mpld3.show(port=8080)
+    else:
+        plt.show()
