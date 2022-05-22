@@ -1,3 +1,12 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "cSpell.words": [
+        "cmap",
+        "imshow",
+        "keras",
+        "mnist",
+        "mpld",
+        "relu",
+        "xlabel"
+    ]
 }
