@@ -1,4 +1,5 @@
 IMAGE := fashion-image-neural-network-classifier
+VERSION := 0.0.1
 
 start:
 	python3 main.py
@@ -19,3 +20,6 @@ tag:
 push:
 	docker push ${REGISTRY_URL}
 	git push --tags
+
+all:
+	make build && make auth && make tag && make push
