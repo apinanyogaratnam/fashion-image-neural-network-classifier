@@ -52,6 +52,6 @@ for i in range(5):
     plt.title(f"Prediction {current_wearable}")
 
     if DOCKERIZED:
-        mpld3.show(port=8080)
+        mpld3.show(ip='0.0.0.0', port=8080)
     else:
         plt.show()
