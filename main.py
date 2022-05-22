@@ -1,3 +1,4 @@
+from lib2to3.pgen2.token import NUMBER
 import os
 
 import mpld3
@@ -41,17 +42,20 @@ files = os.listdir(os.getcwd())
 if 'images' not in files:
     os.mkdir('images')
 
-for i in range(5):
-    plt.grid(False)
+fig = plt.figure(figsize=(6, 6))
+
+NUMBER_OF_IMAGES = 5
+for i in range(NUMBER_OF_IMAGES):
+    plt.subplot(NUMBER_OF_IMAGES, NUMBER_OF_IMAGES, i + 1)
     plt.imshow(test_images[i], cmap=plt.cm.binary)
     current_test_label_index = test_labels[i]
     current_test_label = class_names[current_test_label_index]
     current_prediction_index = np.argmax(prediction[i])
     current_wearable = class_names[current_prediction_index]
-    plt.xlabel(f"Actual {current_test_label}")
-    plt.title(f"Prediction {current_wearable}")
+    plt.xlabel("Actual: " + current_test_label)
+    plt.title("Predicted: " + current_wearable)
 
-    if DOCKERIZED:
-        mpld3.show(ip='0.0.0.0', port=8080)
-    else:
-        plt.show()
+if DOCKERIZED:
+    mpld3.show(ip='0.0.0.0', port=8080)
+else:
+    plt.show()
