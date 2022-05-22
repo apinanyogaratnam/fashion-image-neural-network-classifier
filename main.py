@@ -45,8 +45,11 @@ for i in range(5):
     current_wearable = class_names[current_prediction_index]
     plt.xlabel(f"Actual {current_test_label}")
     plt.title(f"Prediction {current_wearable}")
-    image_name = current_test_label.replace(' ', '').lower()
-    plt.savefig(f'images/{image_name}.png')
+
+    plt.show()
+
+    # image_name = current_test_label.replace(' ', '').lower()
+    # plt.savefig(f'images/{image_name}.png', dpi=100)
 
 print('giving the user 300 seconds to view the saves images')
 time.sleep(300)
