@@ -1,6 +1,6 @@
 IMAGE := fashion-image-neural-network-classifier
 VERSION := 0.0.1
-REGISTRY_URL := ghrc.io/apinanyogaratnam/fashion-image-neural-network-classifier:${VERSION}
+REGISTRY_URL := ghcr.io/apinanyogaratnam/${IMAGE}:${VERSION}
 
 start:
 	python3 main.py
